@@ -1,2 +1,15 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import { writable } from 'svelte/store';
+
+	export let data;
+
+	let form = writable(data.form);
+
+	function addTag() {
+		$form.data.tags['third'] = 3;
+	}
+</script>
+
+<pre>{JSON.stringify($form, null, 2)}</pre>
+
+<button onclick={addTag}>Add a tag</button>
